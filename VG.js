@@ -26,3 +26,84 @@ class JumpScene extends Phaser.Scene {
     });
   }
 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  }
+
+let config = {
+  type: Phaser.AUTO,
+  width: gameOptions.width,
+  height: gameOptions.height,
+  backgroundColor: '##cd4a58',
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: gameOptions.gravity },
+    }
+  },
+  scene: JumpScene,
+};
+
+game = new Phaser.Game(config);
+
+
+// With this function, we move the platforms lower until they're off screen and then we reposition
+// them above the screen to create an endless effect.
+function updateY(platform){
+  let delta = Math.floor(gameOptions.height/2) - player.y;  // we want to keep the player somewhere in the center of the screen so we'll measure the difference from the center y
+
+  if(delta > 0){ 
+    platform.y += delta/30; //the delta may be too large so I'll make it smaller by dividing it by 30
+  }
+
+  if(platform.y > 630){
+    platform.y = -platform.height;
+    platform.x = Math.floor(Math.random() * 400) + 24;
+    platformCount += 1;
+  }
+}
+  
